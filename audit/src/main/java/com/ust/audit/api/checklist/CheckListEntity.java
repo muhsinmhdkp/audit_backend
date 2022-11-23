@@ -1,6 +1,9 @@
 package com.ust.audit.api.checklist;
 
+import com.ust.audit.api.audit_status.AuditStatusEntity;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,18 +14,24 @@ import java.time.LocalDateTime;
 public class CheckListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ustAuditChecklistId ;
+    @Column(name = "ust_audit_checklist_id")
+    private int auditChecklistId ;
 
-    @Column(nullable = false)
-    private String ustAuditChecklistType;
+    @Column(name = "ust_audit_checklist_type", nullable = false)
+    private String auditChecklistType;
 
-    @Column(nullable = false)
-    private String ustAuditChecklistQuestions;
+    @Column(name = "ust_audit_checklist_questions",nullable = false)
+    private String auditChecklistQuestions;
 
-    @Column(nullable = false)
-    private boolean ustAuditChecklistStatus;
+    @Column(name = "ust_audit_checklist_status",nullable = false)
+    private boolean auditChecklistStatus;
 
-    @Column(nullable = false)
-    private LocalDateTime ustAuditChecklistCreatedDate;
-    private LocalDateTime ustAuditChecklistModifiedDate;
+    @Column(name = "ust_audit_checklist_created_date",nullable = false)
+    private LocalDateTime auditChecklistCreatedDate;
+
+    @Column(name = "ust_audit_checklist_modified_date")
+    private LocalDateTime auditChecklistModifiedDate;
+
+    @OneToOne(mappedBy="checkListId")
+    private AuditStatusEntity auditStatusEntity;
 }

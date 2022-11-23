@@ -1,27 +1,44 @@
 package com.ust.audit.api.benchmark;
 
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+
 @Entity
 @Data
-@Table(name = "ust_audit_benchmark_acceptance")
+@Table(name = "ust_audit_benchmark")
 public class BenchMarkEntity {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ustAuditBenchmarkAcceptanceId;
-
     @Id
-    private String ustAuditBenchmarkAcceptanceType;
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private int ustAuditBenchmarkAcceptanceMinNum;
+    @Column(name = "ust_audit_benchmark_id")
+    private int auditBenchmarkId;
 
-    @Column(nullable = false)
-    private boolean ustAuditBenchmarkAcceptanceStatus;
+    @Column(name = "ust_audit_benchmark_audit_type", nullable = false,unique = true)
+    private String auditBenchmarkAuditType;
 
-    @Column(nullable = false)
-    private LocalDateTime ustAuditBenchmarkAcceptanceCreatedDate;
-    private LocalDateTime ustAuditBenchmarkAcceptanceModifiedDate;
+    @Column(name="ust_audit_benchmark_min_num", nullable = false)
+    private int auditBenchmarkMinNum;
+
+    @Column(name = "ust_audit_benchmark_status", nullable = false)
+    private boolean auditBenchmarkStatus;
+
+    @Column(name="ust_audit_benchmark_created_date", nullable = false)
+    private LocalDateTime auditBenchmarkCreatedDate;
+
+    @Column(name="ust_audit_benchmark_modified_date")
+    private LocalDateTime auditBenchmarkModifiedDate;
+
+    /*
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ust_audit_type_id")
+    private AuditTypeEntity auditTypeEntity;
+
+     */
 }
