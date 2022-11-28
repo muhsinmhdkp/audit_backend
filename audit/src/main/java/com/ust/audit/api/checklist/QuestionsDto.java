@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class QuestionsDto {
 
-    private int ustAuditChecklistId ;
-    private String ustAuditChecklistQuestions;
+    private int auditChecklistId ;
+    private String auditChecklistQuestions;
 
 }

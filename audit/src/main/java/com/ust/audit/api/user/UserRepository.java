@@ -1,4 +1,12 @@
 package com.ust.audit.api.user;
 
-public interface UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository  extends JpaRepository<UstUser,Integer> {
+    Optional<UstUser> findByEmail(String email);
 }
+

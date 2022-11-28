@@ -5,6 +5,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,6 +41,12 @@ public class CheckListService {
 
 
         return QuestionsList;
+    }
+
+    public void saveCheckList(CheckListEntity checkListEntity) {
+        checkListEntity.setAuditChecklistCreatedDate(LocalDateTime.now());
+        checkListEntity.setAuditChecklistModifiedDate(checkListEntity.getAuditChecklistCreatedDate());
+        checkListRepository.save(checkListEntity);
     }
 
     /**
