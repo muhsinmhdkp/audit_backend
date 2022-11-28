@@ -26,8 +26,7 @@ public class CheckListController {
      * @param type the type
      * @return the response entity
      */
-
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/checklist/{type}")
     public ResponseEntity<List<QuestionsDto>> get(@PathVariable String type){
         try{
