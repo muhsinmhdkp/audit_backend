@@ -18,16 +18,18 @@ public class CheckListEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ustAuditChecklistId ;
 
-    @Column(nullable = false)
-    private String ustAuditChecklistAuditType;
+    @Column(name="ust_audit_checklist_audit_type",nullable = false)
+    private String checklistAuditType;
 
-    @Column(nullable = false)
-    private String ustAuditChecklist0Questions;
+    @Column(name="ust_audit_checklist_questions",nullable = false)
+    private String checklistQuestions;
 
-    @Column(nullable = false)
-    private boolean ustAuditChecklistStatus;
+    @Column(name="ust_audit_checklist_status",nullable = false)
+    private boolean checklistStatus;
 
-    @Column(nullable = false)
-    private LocalDateTime ustAuditChecklistCreatedDate;
-    private LocalDateTime ustAuditChecklistModifiedDate;
+    @Column(name="ust_audit_checklist_created_date",nullable = false)
+    private LocalDateTime checklistCreatedDate;
+
+    @Column(name="ust_audit_checklist_modified_date")
+    private LocalDateTime checklistModifiedDate;
 }

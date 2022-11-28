@@ -18,7 +18,7 @@ public interface CheckListRepository extends JpaRepository<CheckListEntity, Inte
      * @param type the type
      * @return the questions by audit type
      */
-    @Query(value = "SELECT q FROM CheckListEntity  q WHERE q.ustAuditChecklistAuditType=?1")
+    @Query(value = "SELECT q FROM CheckListEntity  q WHERE q.checklistAuditType=?1")
     List<CheckListEntity> getQuestionsByAuditType(String type);
 
 

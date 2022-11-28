@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class CheckListService {
 
     /**
-     * The Check list repository.
+     * The Checklist repository.
      */
     @Autowired
     CheckListRepository checkListRepository;
