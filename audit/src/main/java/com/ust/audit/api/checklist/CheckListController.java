@@ -27,6 +27,7 @@ public class CheckListController {
      * @return the response entity
      */
 
+
     @GetMapping("/checklist/{type}")
     public ResponseEntity<List<QuestionsDto>> get(@PathVariable String type){
         try{
