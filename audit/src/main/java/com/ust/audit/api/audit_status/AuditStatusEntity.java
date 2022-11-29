@@ -1,5 +1,6 @@
 package com.ust.audit.api.audit_status;
 
+import com.ust.audit.api.benchmark.BenchMarkEntity;
 import com.ust.audit.api.checklist.CheckListEntity;
 import com.ust.audit.api.project.ProjectEntity;
 import lombok.Data;
@@ -18,7 +19,40 @@ public class AuditStatusEntity {
     @Column(name = "ust_audit_status_id")
     private int auditStatusId;
 
-    /*
+    //@Column(name = "ust_audit_project_name",nullable = false)
+    //private String projectName;
+
+    @Column( name = "ust_audit_status")
+    private String auditStatus;
+
+    @Column(name = "ust_audit_type",nullable = false)
+    private String auditType;
+
+    @Column(name = "ust_audit_status_yes_count",nullable = false)
+    private int  auditResponseYesCount;
+
+    //@Column(name = "ust_audit_status_status",nullable = false)
+    //private boolean auditStatusStatus;
+
+    @Column(name = "ust_audit_status_created_date",nullable = false)
+    private LocalDateTime auditStatusCreatedDate;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ust_audit_status__benchmark_id")
+    private BenchMarkEntity benchMarkEntity;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
     @Column(name = "ust_audit_status_project_id",nullable = false, unique = true)
     private int auditStatusProjectId;
 
@@ -42,24 +76,3 @@ public class AuditStatusEntity {
 
     */
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "ust_audit_project_id")
-    private ProjectEntity projectId;
-
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "ust_audit_checklist_id")
-    private CheckListEntity checkListId;
-
-    @Column(name = "ust_audit_status_response",nullable = false)
-    private boolean  auditResponse;
-
-    @Column(name = "ust_audit_status_status",nullable = false)
-    private boolean auditStatusStatus;
-
-    @Column(name = "ust_audit_status_created_date",nullable = false)
-    private LocalDateTime auditStatusCreatedDate;
-
-    @Column(name = "ust_audit_status_modified_date")
-    private LocalDateTime auditStatusModifiedDate;
-
-}

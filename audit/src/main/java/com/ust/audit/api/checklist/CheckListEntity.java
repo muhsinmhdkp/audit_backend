@@ -39,6 +39,6 @@ public class CheckListEntity {
     @Column(name = "ust_audit_checklist_modified_date")
     private LocalDateTime auditChecklistModifiedDate;
 
-    @OneToOne(mappedBy="checkListId")
-    private AuditStatusEntity auditStatusEntity;
+    //@OneToOne(mappedBy="checkListId")
+    //private AuditStatusEntity auditStatusEntity;
 }

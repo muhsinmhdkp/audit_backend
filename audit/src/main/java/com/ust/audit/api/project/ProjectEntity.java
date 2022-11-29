@@ -38,9 +38,8 @@ public class ProjectEntity {
     @Column(name = "ust_project_modified_date")
     private LocalDateTime projectModifiedDate;
 
-
-    @OneToOne(cascade  =CascadeType.ALL,fetch = FetchType.EAGER,mappedBy="projectId")
+    //@OneToOne(cascade  =CascadeType.ALL,fetch = FetchType.EAGER,mappedBy="projectId")
    // @JsonIgnore
-    private AuditStatusEntity auditStatusEntity;
+    //private AuditStatusEntity auditStatusEntity;
 
 }

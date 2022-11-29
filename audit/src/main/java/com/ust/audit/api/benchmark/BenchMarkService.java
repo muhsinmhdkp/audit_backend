@@ -21,6 +21,7 @@ public class BenchMarkService {
         updateBenchMark.setAuditBenchmarkStatus(benchMarkEntity.isAuditBenchmarkStatus());
         updateBenchMark.setAuditBenchmarkModifiedDate(LocalDateTime.now());
         benchMarkRepository.save(updateBenchMark);
+
         return updateBenchMark;
     }
 

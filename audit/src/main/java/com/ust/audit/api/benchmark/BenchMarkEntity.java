@@ -1,6 +1,7 @@
 package com.ust.audit.api.benchmark;
 
 
+import com.ust.audit.api.audit_status.AuditStatusEntity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,4 +42,7 @@ public class BenchMarkEntity {
     private AuditTypeEntity auditTypeEntity;
 
      */
+
+    @OneToOne(mappedBy="benchMarkEntity")
+    private AuditStatusEntity auditStatusEntity;
 }

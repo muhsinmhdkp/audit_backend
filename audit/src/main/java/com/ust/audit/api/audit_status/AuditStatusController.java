@@ -1,6 +1,7 @@
 package com.ust.audit.api.audit_status;
 
 import com.ust.audit.api.benchmark.BenchMarkEntity;
+import com.ust.audit.api.checklist.CheckListEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,12 @@ public class AuditStatusController {
     @Autowired
     AuditStatusService auditStatusService;
 
+
+
     @PostMapping("/auditstatus")
     public ResponseEntity<AuditStatusEntity> add(@RequestBody AuditStatusEntity auditStatusEntity) {
         try {
+            auditStatusEntity.setAuditStatus(auditStatusService.checkBeckmark(auditStatusEntity));
             auditStatusService.saveAuditStatus(auditStatusEntity);
             return new ResponseEntity<AuditStatusEntity>(auditStatusEntity, HttpStatus.OK);
         } catch (NoSuchElementException e) {
@@ -25,6 +29,17 @@ public class AuditStatusController {
         }
 
     }
+
+     //----------------------------------------------------------
+
+     @PostMapping("/auditstatusarespose")
+     public ResponseEntity<List<AuditStatusEntity>>  add(@RequestBody List<AuditStatusEntity> auditStatusEntity){
+         auditStatusService.saveAuditStatusList(auditStatusEntity);
+         return new ResponseEntity<List<AuditStatusEntity>>(auditStatusEntity,HttpStatus.OK);
+     }
+
+     //----------------------------------------------------------
+
     @GetMapping("/auditstatus/{id}")
     public ResponseEntity<AuditStatusEntity> get(@PathVariable Integer id){
         try{
@@ -34,6 +49,8 @@ public class AuditStatusController {
             return new ResponseEntity<AuditStatusEntity>(HttpStatus.NOT_FOUND);
         }
     }
+
+
     @GetMapping("/auditstatus")
     public ResponseEntity<List<AuditStatusEntity>> getAll(){
         try{
