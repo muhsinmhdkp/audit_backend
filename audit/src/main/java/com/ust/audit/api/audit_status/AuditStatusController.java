@@ -12,12 +12,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+
 public class AuditStatusController {
     @Autowired
     AuditStatusService auditStatusService;
 
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/auditstatus")
     public ResponseEntity<AuditStatusEntity> add(@RequestBody AuditStatusEntity auditStatusEntity) {
         try {
@@ -32,11 +33,14 @@ public class AuditStatusController {
 
      //----------------------------------------------------------
 
+    /*
      @PostMapping("/auditstatusarespose")
      public ResponseEntity<List<AuditStatusEntity>>  add(@RequestBody List<AuditStatusEntity> auditStatusEntity){
          auditStatusService.saveAuditStatusList(auditStatusEntity);
          return new ResponseEntity<List<AuditStatusEntity>>(auditStatusEntity,HttpStatus.OK);
      }
+
+     */
 
      //----------------------------------------------------------
 
@@ -51,14 +55,16 @@ public class AuditStatusController {
     }
 
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/auditstatus")
-    public ResponseEntity<List<AuditStatusEntity>> getAll(){
+    public ResponseEntity<List<AuditStatusEntityDto>> getAll(){
         try{
             List<AuditStatusEntity> getAuditStatusAllList = auditStatusService.getAuditStatusAll();
-            return new ResponseEntity<List<AuditStatusEntity>>(getAuditStatusAllList, HttpStatus.OK);
+            List<AuditStatusEntityDto> auditStatusEntityDto = auditStatusService.entityToDtoConverter(getAuditStatusAllList);
+            return new ResponseEntity<List<AuditStatusEntityDto>>(auditStatusEntityDto, HttpStatus.OK);
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity<List<AuditStatusEntity>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<AuditStatusEntityDto>>(HttpStatus.NOT_FOUND);
         }
     }
 

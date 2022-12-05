@@ -1,6 +1,7 @@
 package com.ust.audit.api.benchmark;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ust.audit.api.audit_status.AuditStatusEntity;
 import lombok.Data;
 import lombok.Getter;
@@ -43,6 +44,6 @@ public class BenchMarkEntity {
 
      */
 
-    @OneToOne(mappedBy="benchMarkEntity")
-    private AuditStatusEntity auditStatusEntity;
+    //@OneToOne(mappedBy="benchMarkEntity")
+    //private AuditStatusEntity auditStatusEntity;
 }

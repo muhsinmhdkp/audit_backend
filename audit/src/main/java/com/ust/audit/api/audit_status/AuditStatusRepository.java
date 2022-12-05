@@ -14,4 +14,10 @@ public interface AuditStatusRepository extends JpaRepository <AuditStatusEntity,
     @Query(value = "SELECT q.auditBenchmarkMinNum FROM BenchMarkEntity  q WHERE q.auditBenchmarkAuditType=?1")
     int findBenchmarkByType(String type);
 
+    /**
+    @Query(value = "SELECT q FROM BenchMarkEntity q order by q.auditStatusId ")
+    List<AuditStatusEntity> findAllAuditStatus();
+*/
+
+
 }

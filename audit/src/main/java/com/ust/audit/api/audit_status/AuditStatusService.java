@@ -4,6 +4,8 @@ import com.ust.audit.api.benchmark.BenchMarkEntity;
 import com.ust.audit.api.benchmark.BenchMarkRepository;
 import com.ust.audit.api.checklist.CheckListEntity;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +19,18 @@ public class AuditStatusService {
     @Autowired
     AuditStatusRepository auditStatusRepository;
 
+    @Autowired
+    ModelMapper modelMapper;
+
+    public  List<AuditStatusEntityDto> entityToDtoConverter(List<AuditStatusEntity> getAuditStatusAllList) {
+        List<AuditStatusEntityDto> auditStatusEntityDtos = modelMapper.map(getAuditStatusAllList,new TypeToken<List<AuditStatusEntityDto>>(){}.getType());
+        return auditStatusEntityDtos;
+    }
 
 
     public  List<AuditStatusEntity> getAuditStatusAll() {
         return auditStatusRepository.findAll();
+        //return auditStatusEntityList;
     }
 
     public void saveAuditStatus(AuditStatusEntity auditStatusEntity) {

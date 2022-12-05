@@ -1,5 +1,6 @@
 package com.ust.audit.api.audit_status;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ust.audit.api.benchmark.BenchMarkEntity;
 import com.ust.audit.api.checklist.CheckListEntity;
 import com.ust.audit.api.project.ProjectEntity;
